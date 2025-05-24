@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Create Task</title>
+  <style>
+    /* Base styling */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f7f9;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: start;
+      min-height: 100vh;
+      padding-top: 50px;
+    }
+
+    /* Form container */
+    form {
+      background: #ffffff;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+      width: 100%;
+      max-width: 500px;
+    }
+
+    /* Labels */
+    label {
+      font-weight: 600;
+      color: #333;
+      font-size: 16px;
+    }
+
+    /* Input fields */
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 12px 14px;
+      margin-top: 8px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+      background-color: #f9fbfc;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    input[type="text"]:focus,
+    textarea:focus {
+      border-color: #0077ff;
+      box-shadow: 0 0 0 3px rgba(0, 119, 255, 0.1);
+      outline: none;
+    }
+
+    /* Button styling */
+    button {
+      background-color: #0077ff;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #005fcc;
+    }
+
+    /* Link styling */
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      text-decoration: none;
+      color: #0077ff;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: #005fcc;
+    }
+  </style>
+</head>
+<body>
+
+  <form method="POST">
+    {% csrf_token %}
+    <label>Title:</label><br>
+    <input type="text" name="title" required><br><br>
+    <label>Description:</label><br>
+    <textarea name="description"></textarea><br><br>
+    <button type="submit">Create</button>
+  </form>
+
+  <a href="{% url 'tasks:task_list' %}">← Back to list</a>
+
+</body>
+</html>
